@@ -1,0 +1,87 @@
+package meujogo.modelo;
+
+import java.awt.Image;
+import java.awt.event.KeyEvent;
+
+import javax.swing.ImageIcon;
+
+public class Player {
+
+	private int x , y;
+	private int dx , dy;
+	private Image imagem;
+	private int altura , largura;
+	
+	public Player() {
+		this.x = 100;
+		this.y = 100;
+	}
+	
+	public void Load() {
+	ImageIcon referencia = new ImageIcon("res\\sapaceship2.png");
+	imagem = referencia.getImage();
+	altura = imagem.getHeight(null);
+	largura = imagem.getHeight(null);
+	
+	}
+	
+	public void update() {
+		x += dx;
+		y += dy;
+		
+	}
+	
+	public void KeyPressed(KeyEvent tecla) {
+		int codigo = tecla.getKeyCode();
+		
+		if (codigo == KeyEvent.VK_W) {
+			dy = -3;
+		}
+		
+		if (codigo == KeyEvent.VK_S) {
+			dy = 3;
+		}
+		
+		if (codigo == KeyEvent.VK_A) {
+			dx = -3;
+		}
+		
+		if (codigo == KeyEvent.VK_D) {
+			dx = 3;
+		}
+	}
+	
+	public void KeyRelease(KeyEvent tecla) {
+		int codigo = tecla.getKeyCode();
+		
+		if (codigo == KeyEvent.VK_W) {
+			dy = 0;
+		}
+		
+		if (codigo == KeyEvent.VK_S) {
+			dy = 0;
+		}
+		
+		if (codigo == KeyEvent.VK_A) {
+			dx = 0;
+		}
+		
+		if (codigo == KeyEvent.VK_D) {
+			dx = 0;
+		}
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public Image getImagem() {
+		return imagem;
+	}
+	
+	
+}
